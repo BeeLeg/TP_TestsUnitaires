@@ -58,11 +58,17 @@ public class Color {
     }
 
     public String getHexa(){
+        if(hexa == null) {
+            setHexa(null);
+        }
         return hexa;
     }
 
     public void setHexa(String hexa){
-        this.hexa = hexa;
+        if(hexa == null)
+            this.hexa = String.format("#%02X%02X%02X", rouge, vert, bleu);
+        else
+            this.hexa = hexa;
     }
 
     public boolean isHexaFormat(String string) {

@@ -66,8 +66,7 @@ class ColorTest {
 
     @Test
     public void testToString(){
-        color1.setHexa(color2.getHexa());
-        assertEquals("[value=#123456, r=10, g=0, b=255]", color1.toString());
+        assertEquals("[value=#0A00FF, r=10, g=0, b=255]", color1.toString());
     }
 
     @AfterEach
