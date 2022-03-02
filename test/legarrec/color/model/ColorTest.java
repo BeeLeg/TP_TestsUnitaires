@@ -18,40 +18,47 @@ class ColorTest {
 
     @Test
     public void testColorConstructor1() {
-        assertEquals(10, color1.getRouge());
-        assertEquals(0, color1.getVert());
-        assertEquals(255, color1.getBleu());
+        assertEquals(10, color1.getRed());
+        assertEquals(0, color1.getGreen());
+        assertEquals(255, color1.getBlue());
+        assertEquals("#0A00FF", color1.getHexValue());
     }
 
     @Test
     public void testSetColors(){
-        color1.setRouge(30);
-        color1.setVert(30);
-        color1.setBleu(30);
-        assertEquals(30,color1.getRouge(), "La couleur rouge est pas bonne");
-        assertEquals(30,color1.getVert(), "la couleur verte est pas bonne");
-        assertEquals(30,color1.getBleu(), "la couleur bleue est pas bonne");
+        color1.setRed(30);
+        color1.setGreen(30);
+        color1.setBlue(30);
+        assertEquals(30,color1.getRed(), "La couleur rouge est pas bonne");
+        assertEquals(30,color1.getGreen(), "la couleur verte est pas bonne");
+        assertEquals(30,color1.getBlue(), "la couleur bleue est pas bonne");
     }
 
     @Test
     public void testColorConstructor2(){
-        assertEquals("#123456", color2.getHexa());
+        assertEquals("#123456", color2.getHexValue());
+        assertEquals(18, color2.getRed());
+        assertEquals(52, color2.getGreen());
+        assertEquals(86, color2.getBlue());
     }
 
     @Test
     public void testSetHexa(){
-        color2.setHexa("#654321");
-        assertEquals("#654321", color2.getHexa(), "l'Hexa n'est pas bon");
+        color2.setHexValue("#654321");
+        assertEquals("#654321", color2.getHexValue(), "l'Hexa n'est pas bon");
     }
 
     @Test
     public void testInvalideArgumentConstructor1(){
-        assertThrows(IllegalArgumentException.class, () -> new Color(-1, 30, 25));
-        IllegalArgumentException excep = assertThrows(IllegalArgumentException.class, () -> color1.setRouge(900));
+        IllegalArgumentException excep = assertThrows(IllegalArgumentException.class, () -> color1.setRed(900));
         assertEquals("Valeur doit être comprise entre 0 et 255", excep.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> color1.setRed(-20));
 
-        assertThrows(IllegalArgumentException.class, () -> color1.setVert(-20));
-        assertThrows(IllegalArgumentException.class, () -> color1.setBleu(900));
+        assertThrows(IllegalArgumentException.class, () -> color1.setGreen(-20));
+        assertThrows(IllegalArgumentException.class, () -> color1.setGreen(900));
+
+        assertThrows(IllegalArgumentException.class, () -> color1.setBlue(-20));
+        assertThrows(IllegalArgumentException.class, () -> color1.setBlue(900));
     }
 
     @Test
